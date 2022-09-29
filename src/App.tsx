@@ -1,17 +1,17 @@
-import styled from 'styled-components'
+import GlobalComponent from 'components/GlobalComponent'
 import Tab from './components/Tab'
+import Toggle from './components/Toggle'
 
 const App = () => {
+  const ComponentArray = [<Tab key="tab" />, <Toggle key="toggle" />]
+
   return (
-    <Container>
-      <Tab />
-    </Container>
+    <GlobalComponent>
+      {ComponentArray.map((comp, index) => {
+        return <div key={index}>{comp}</div>
+      })}
+    </GlobalComponent>
   )
 }
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
 export default App
