@@ -4,20 +4,29 @@ interface GlobalProps {
   title?: string
   children: React.ReactNode
 }
+
 const GlobalComponent = ({ title, children }: GlobalProps) => {
   return (
     <GlobalContainer>
-      <Title>{title}</Title>
+      {/* <Title>{title}</Title> */}
       {children}
     </GlobalContainer>
   )
 }
 
-const GlobalContainer = styled.section`
+const GlobalContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  margin-bottom: 50px;
+
+  > div {
+    margin-bottom: 50px;
+
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
 `
 
 const Title = styled.p`
