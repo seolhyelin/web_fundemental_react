@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react'
 import styled from 'styled-components'
 
-import { Heart, Broken } from '../images'
+import { Heart, Broken } from '../../images'
 
 const Input = () => {
   const [isValidEmail, setIsValidEmail] = useState(false)

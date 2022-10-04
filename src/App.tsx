@@ -1,12 +1,14 @@
-import GlobalComponent from 'components/GlobalComponent'
-import Input from 'components/Input'
-import styled from 'styled-components'
-import Tab from './components/Tab'
-import Toggle from './components/Toggle'
+import Problem01 from '01/p1'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 const App = () => {
-  const ComponentArray = [<Tab title="Tab" key="tab" />, <Toggle key="toggle" />, <Input key="input" />]
-  return <GlobalComponent>{ComponentArray}</GlobalComponent>
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/01/p" element={<Problem01 />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App

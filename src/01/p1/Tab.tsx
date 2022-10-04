@@ -7,7 +7,6 @@ interface TabProps {
 
 const Tab = ({ title }: TabProps) => {
   const tabTitle = ['설혜린', '이진석', '이관석']
-
   const [activeItem, setActiveItem] = useState(0)
 
   const handleActiveItem = (index: number) => {

@@ -8,7 +8,6 @@ interface GlobalProps {
 const GlobalComponent = ({ title, children }: GlobalProps) => {
   return (
     <GlobalContainer>
-      {/* <Title>{title}</Title> */}
       {children}
     </GlobalContainer>
   )
