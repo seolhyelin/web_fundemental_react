@@ -1,26 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GlobalComponent from 'components/GlobalComponent'
+import Input from 'components/Input'
+import styled from 'styled-components'
+import Tab from './components/Tab'
+import Toggle from './components/Toggle'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+  const ComponentArray = [<Tab title="Tab" key="tab" />, <Toggle key="toggle" />, <Input key="input" />]
+  return <GlobalComponent>{ComponentArray}</GlobalComponent>
 }
 
-export default App;
+export default App
