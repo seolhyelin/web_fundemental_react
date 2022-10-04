@@ -1,16 +1,14 @@
-import React, { ChangeEventHandler, useState } from 'react'
+import React, { MouseEvent, ChangeEventHandler, useState } from 'react'
 import styled from 'styled-components'
 
 const Slider = () => {
   const [percent, setPercent] = useState(50)
-  const [numberButton, setNumberButton] = useState<number>()
+  const [numberButton, setNumberButton] = useState<string | number>()
   const numberButtonArray = [1, 25, 50, 75, 100]
 
-  const handleRange = (e: ChangeEventHandler<HTMLInputElement>) => {
-    // const currentPercent =
-    // setPercent(currentPercent)
+  const changeRangeNumber = (e: MouseEvent<HTMLButtonElement>) => {
+    setNumberButton(e.currentTarget.value)
   }
-  const changeRangeNumber = () => {}
 
   return (
     <SliderContainer>
@@ -18,12 +16,16 @@ const Slider = () => {
         <RangePercent>{percent} %</RangePercent>
       </RangeBar>
 
-      <PercentContainer>
-        {/* <PercentBar type="range" min={1} max={100} onChange={handleRange} /> */}
+      {/* <PercentContainer>
+        <PercentBar type="range" onChange={(e) => setPercent(+e.currentTarget.value)} />
         {numberButtonArray.map((number, index) => {
-          return <PercentNumber key={index}>{number}</PercentNumber>
+          return (
+            <PercentNumber key={index} value={percent} onClick={() => changeRangeNumber(number)}>
+              {number}
+            </PercentNumber>
+          )
         })}
-      </PercentContainer>
+      </PercentContainer> */}
     </SliderContainer>
   )
 }
