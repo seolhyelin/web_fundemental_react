@@ -49,6 +49,7 @@ const TabName = styled.button`
   list-style: none;
   text-align: center;
   cursor: pointer;
+  will-change: font-weight;
 
   &.focused {
     color: red;
