@@ -5,7 +5,7 @@ interface TabProps {
   title: string
 }
 
-const Tab = ({ title }: TabProps) => {
+const Tab = () => {
   const tabTitle = ['설혜린', '이진석', '이관석']
   const [activeItem, setActiveItem] = useState(0)
 
@@ -14,7 +14,7 @@ const Tab = ({ title }: TabProps) => {
   }
 
   return (
-    <TabContainer title={title}>
+    <TabContainer>
       {tabTitle.map((tabItem, index) => {
         return (
           <TabName
