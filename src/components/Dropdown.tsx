@@ -1,12 +1,12 @@
 import { ArrowDown } from 'images'
-import React, { useState, MouseEvent, useEffect } from 'react'
+import React, { useState, MouseEvent } from 'react'
 import styled from 'styled-components'
 
 const Dropdown = () => {
   const wordArray = ['설혜린', '이진석', '이관석', '설토실', '한우석', '토실이', '설레임', '한그루', '토레타']
   const [isOpen, setIsOpen] = useState(false)
   const [searchWord, setSearchWord] = useState<string>()
-  const [currentWord, setCurrentWord] = useState<string>()
+  const [currentWord, setCurrentWord] = useState<string>('all')
 
   const handleDropDown = () => {
     setIsOpen(!isOpen)
@@ -17,7 +17,14 @@ const Dropdown = () => {
     setIsOpen(false)
   }
 
-  // const filteredWord = wordArray.filter((word) => word.includes(searchWord as string))
+  const checkFilteredList = (val: any) => {
+    const filteredWords = wordArray.filter((word) => word.includes(searchWord as string))
+
+    if (searchWord === '') return val
+    if (filteredWords) return filteredWords
+
+    return val
+  }
 
   return (
     <DropdownContainer>
@@ -33,7 +40,7 @@ const Dropdown = () => {
             {wordArray.map((word, index) => {
               return (
                 <li onClick={choiceCurrentWord} role="presentation" id={word} key={index}>
-                  {word}
+                  {checkFilteredList(word)}
                 </li>
               )
             })}
