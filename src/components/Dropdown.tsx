@@ -1,34 +1,38 @@
 import { ArrowDown } from 'images'
-import React, { useState, MouseEvent } from 'react'
+import React, { useState, MouseEvent, useEffect } from 'react'
 import styled from 'styled-components'
 
 const Dropdown = () => {
   const wordArray = ['설혜린', '이진석', '이관석', '설토실', '한우석', '토실이', '설레임', '한그루', '토레타']
   const [isOpen, setIsOpen] = useState(false)
-  const [currentWord, setCurrentWord] = useState<string | number>()
+  const [searchWord, setSearchWord] = useState<string>()
+  const [currentWord, setCurrentWord] = useState<string>()
 
   const handleDropDown = () => {
     setIsOpen(!isOpen)
   }
 
   const choiceCurrentWord = (e: MouseEvent<HTMLLIElement>) => {
-    // setCurrentWord(e.currentTarget.id)
+    setCurrentWord(e.currentTarget.id)
+    setIsOpen(false)
   }
+
+  // const filteredWord = wordArray.filter((word) => word.includes(searchWord as string))
 
   return (
     <DropdownContainer>
       <KeywordButton onClick={handleDropDown}>
-        all
+        {currentWord}
         <ArrowDown />
       </KeywordButton>
 
       {isOpen && (
         <DropBoxWrapper>
-          <SearchInput placeholder="search" />
+          <SearchInput placeholder="search" onChange={(e) => setSearchWord(e.currentTarget.value)} />
           <ResultBox>
             {wordArray.map((word, index) => {
               return (
-                <li onClick={choiceCurrentWord} role="presentation" key={index}>
+                <li onClick={choiceCurrentWord} role="presentation" id={word} key={index}>
                   {word}
                 </li>
               )
@@ -71,6 +75,7 @@ const ResultBox = styled.ul`
   li {
     list-style: none;
     margin-bottom: 5px;
+    cursor: pointer;
 
     :last-child {
       margin-bottom: 0;
