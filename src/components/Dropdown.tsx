@@ -1,5 +1,5 @@
 import { ArrowDown } from 'images'
-import React, { useState, MouseEvent } from 'react'
+import { useState, MouseEvent } from 'react'
 import styled from 'styled-components'
 
 const Dropdown = () => {
@@ -17,15 +17,16 @@ const Dropdown = () => {
     setIsOpen(false)
   }
 
-  const checkFilteredList = (val: any) => {
-    const filteredWords = wordArray.filter((word) => word.includes(searchWord as string))
-
-    if (searchWord === '') return val
-    if (filteredWords) return filteredWords
-
-    return val
-  }
-
+  // {dummyData.filter((val) =>{
+  //   if(searchTerm == ""){
+  //     return val
+  //   }else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
+  //     return val
+  //   }
+  // }
+  // }).map(data =>{
+  //   return <p>dummyData.title</p>
+  // })}
   return (
     <DropdownContainer>
       <KeywordButton onClick={handleDropDown}>
@@ -37,13 +38,32 @@ const Dropdown = () => {
         <DropBoxWrapper>
           <SearchInput placeholder="search" onChange={(e) => setSearchWord(e.currentTarget.value)} />
           <ResultBox>
-            {wordArray.map((word, index) => {
-              return (
+            {wordArray
+              // eslint-disable-next-line consistent-return
+              .filter((val) => {
+                if (searchWord == '') {
+                  return val
+                }
+                if (val.includes(searchWord as string)) {
+                  return val
+                }
+              })
+              .map((word, index) => {
+                return (
+                  <li onClick={choiceCurrentWord} role="presentation" id={word} key={index}>
+                    {word}
+                  </li>
+                )
+              })}
+            {/* {wordArray.map((word, index) => {
+              return searchWord === '' ? (
                 <li onClick={choiceCurrentWord} role="presentation" id={word} key={index}>
-                  {checkFilteredList(word)}
+                  {word}
                 </li>
+              ) : (
+                <li>{wordArray.filter((val) => val.includes(searchWord as string))}</li>
               )
-            })}
+            })} */}
           </ResultBox>
         </DropBoxWrapper>
       )}
