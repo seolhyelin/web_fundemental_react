@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Slider = () => {
   const [percent, setPercent] = useState(50)
-  const numberButtonArray = [1, 25, 50, 75, 100]
+  const numberButtonArray = [0, 25, 50, 75, 100]
 
   const handlePercent = (e: ChangeEvent<HTMLInputElement>) => {
     setPercent(+e.currentTarget.value)

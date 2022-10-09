@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const Dropdown = () => {
   const wordArray = ['설혜린', '이진석', '이관석', '설토실', '한우석', '토실이', '설레임', '한그루', '토레타']
   const [isOpen, setIsOpen] = useState(false)
-  const [searchWord, setSearchWord] = useState<string>()
+  const [searchWord, setSearchWord] = useState<string>('')
   const [currentWord, setCurrentWord] = useState<string>('all')
 
   const handleDropDown = () => {
@@ -17,16 +17,6 @@ const Dropdown = () => {
     setIsOpen(false)
   }
 
-  // {dummyData.filter((val) =>{
-  //   if(searchTerm == ""){
-  //     return val
-  //   }else if(val.title.toLowerCase().includes(searchTerm.toLowerCase())){
-  //     return val
-  //   }
-  // }
-  // }).map(data =>{
-  //   return <p>dummyData.title</p>
-  // })}
   return (
     <DropdownContainer>
       <KeywordButton onClick={handleDropDown}>
@@ -55,15 +45,6 @@ const Dropdown = () => {
                   </li>
                 )
               })}
-            {/* {wordArray.map((word, index) => {
-              return searchWord === '' ? (
-                <li onClick={choiceCurrentWord} role="presentation" id={word} key={index}>
-                  {word}
-                </li>
-              ) : (
-                <li>{wordArray.filter((val) => val.includes(searchWord as string))}</li>
-              )
-            })} */}
           </ResultBox>
         </DropBoxWrapper>
       )}
